@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.geeks.noteapp.databinding.FragmentOnBoardBinding
 
@@ -29,15 +30,19 @@ class OnBoardFragment : Fragment() {
     }
 
     private fun init() {
-        adapter = OnBoardAdapter(requireActivity())
+        adapter = OnBoardAdapter(requireActivity()) {
+            closeOnBoard()
+        }
         binding.viewPager.adapter = adapter
         binding.dotsIndicator.setViewPager2(binding.viewPager)
     }
+
 
     private fun setupListener() = with(binding) {
         tvScip.setOnClickListener {
             viewPager.setCurrentItem(adapter.itemCount - 1, true)
         }
+
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -45,5 +50,14 @@ class OnBoardFragment : Fragment() {
                 tvScip.visibility = if (position == adapter.itemCount - 1) View.GONE else View.VISIBLE
             }
         })
+
+
     }
+
+    private fun closeOnBoard() {
+        PrefHelper.setOnBoardShown(requireContext())
+        findNavController().navigate(R.id.action_onBoardFragment_to_mainFragment)
+    }
+
+
 }

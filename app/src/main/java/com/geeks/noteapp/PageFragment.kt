@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.geeks.noteapp.databinding.FragmentPageBinding
+import androidx.navigation.fragment.findNavController
+
 
 class PageFragment : Fragment() {
     private lateinit var binding:FragmentPageBinding
@@ -48,8 +50,10 @@ class PageFragment : Fragment() {
                 lottieView.setAnimation(R.raw.onboard3)
                 btnStart.visibility = View.VISIBLE
                 btnStart.setOnClickListener {
-                    // TODO: Переход в MainFragment
+                    PrefHelper.setOnBoardShown(requireContext())
+                    findNavController().navigate(R.id.action_onBoardFragment_to_mainFragment)
                 }
+
             }
 
         }

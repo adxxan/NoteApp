@@ -15,4 +15,16 @@
         android:name="com.geeks.noteapp.PageFragment"
         android:label="fragment_page"
         tools:layout="@layout/fragment_page" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.geeks.noteapp.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+
+    <action
+        android:id="@+id/action_onBoardFragment_to_mainFragment"
+        app:destination="@id/mainFragment" />
+
+
 </navigation>

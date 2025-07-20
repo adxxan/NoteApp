@@ -54,7 +54,6 @@
 
 
 
-
     <Button
         android:id="@+id/btnStart"
         android:layout_width="match_parent"
