@@ -1,4 +1,4 @@
-package com.geeks.noteapp
+package com.geeks.noteapp.on_board
 
 import android.content.Context
 import android.content.SharedPreferences

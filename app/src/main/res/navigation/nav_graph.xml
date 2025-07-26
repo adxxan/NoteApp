@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/onBoardFragment"
-        android:name="com.geeks.noteapp.OnBoardFragment"
+        android:name="com.geeks.noteapp.on_board.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" />
     <fragment
         android:id="@+id/pageFragment"
-        android:name="com.geeks.noteapp.PageFragment"
+        android:name="com.geeks.noteapp.on_board.PageFragment"
         android:label="fragment_page"
         tools:layout="@layout/fragment_page" />
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.geeks.noteapp.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
-
-    <action
-        android:id="@+id/action_onBoardFragment_to_mainFragment"
-        app:destination="@id/mainFragment" />
-
+        android:id="@+id/detailFragment"
+        android:name="com.geeks.noteapp.room_database.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/mainNoteFragment"
+        android:name="com.geeks.noteapp.room_database.MainNoteFragment"
+        android:label="fragment_main_note"
+        tools:layout="@layout/fragment_main_note" />
 
 </navigation>

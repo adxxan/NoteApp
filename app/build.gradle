@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -55,6 +57,18 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation ("com.airbnb.android:lottie:6.0.1")
     implementation ("com.tbuonomo:dotsindicator:4.3")
+
+    // room
+    def roomVersion = "2.7.2"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+    annotationProcessor ("androidx.room:room-compiler:$roomVersion")
+    // See Add the KSP plugin to your project
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+
+
+
 
 
 }

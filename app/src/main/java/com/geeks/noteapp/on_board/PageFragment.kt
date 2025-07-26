@@ -1,4 +1,4 @@
-package com.geeks.noteapp
+package com.geeks.noteapp.on_board
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.geeks.noteapp.databinding.FragmentPageBinding
 import androidx.navigation.fragment.findNavController
+import com.geeks.noteapp.R
 
 
 class PageFragment : Fragment() {
@@ -51,7 +52,7 @@ class PageFragment : Fragment() {
                 btnStart.visibility = View.VISIBLE
                 btnStart.setOnClickListener {
                     PrefHelper.setOnBoardShown(requireContext())
-                    findNavController().navigate(R.id.action_onBoardFragment_to_mainFragment)
+                    findNavController().navigate(R.id.detailFragment)
                 }
 
             }

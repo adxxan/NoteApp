@@ -1,4 +1,4 @@
-package com.geeks.noteapp
+package com.geeks.noteapp.on_board
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.geeks.noteapp.R
 import com.geeks.noteapp.databinding.FragmentOnBoardBinding
 
 
@@ -25,9 +26,15 @@ class OnBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (PrefHelper.isOnBoardShown(requireContext())) {
+            findNavController().navigate(R.id.mainNoteFragment)
+            return
+        }
+
         init()
         setupListener()
     }
+
 
     private fun init() {
         adapter = OnBoardAdapter(requireActivity()) {
@@ -56,7 +63,7 @@ class OnBoardFragment : Fragment() {
 
     private fun closeOnBoard() {
         PrefHelper.setOnBoardShown(requireContext())
-        findNavController().navigate(R.id.action_onBoardFragment_to_mainFragment)
+        findNavController().navigate(R.id.mainNoteFragment)
     }
 
 

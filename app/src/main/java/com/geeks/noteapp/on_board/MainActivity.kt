@@ -1,8 +1,9 @@
-package com.geeks.noteapp
+package com.geeks.noteapp.on_board
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import com.geeks.noteapp.R
 import com.geeks.noteapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val navGraph = navInflater.inflate(R.navigation.nav_graph)
 
         navGraph.setStartDestination(
-            if (isShown) R.id.mainFragment else R.id.onBoardFragment
+            if (isShown) R.id.mainNoteFragment else R.id.onBoardFragment
         )
 
         navController.graph = navGraph
