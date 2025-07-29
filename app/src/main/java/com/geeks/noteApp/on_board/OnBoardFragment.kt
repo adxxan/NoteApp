@@ -1,4 +1,4 @@
-package com.geeks.noteapp.on_board
+package com.geeks.noteApp.on_board
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.geeks.noteapp.R
-import com.geeks.noteapp.databinding.FragmentOnBoardBinding
+import com.geeks.noteApp.R
+import com.geeks.noteApp.databinding.FragmentOnBoardBinding
 
 
 class OnBoardFragment : Fragment() {

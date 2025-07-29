@@ -1,4 +1,4 @@
-package com.geeks.noteapp.room_database
+package com.geeks.noteApp.room_database
 
 import android.os.Bundle
 import android.util.Log
@@ -6,15 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.geeks.noteapp.R
-import com.geeks.noteapp.databinding.FragmentMainNoteBinding
+import com.geeks.noteApp.R
+import com.geeks.noteApp.databinding.FragmentMainNoteBinding
+
 
 class MainNoteFragment : Fragment() {
 
     private lateinit var binding: FragmentMainNoteBinding
-    private val noteAdapter = NoteAdapter()
+    private val noteAdapter = NoteAdapter(::onLongClick, ::onClick)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,8 @@ class MainNoteFragment : Fragment() {
         binding.fabGo.setOnClickListener {
             findNavController().navigate(R.id.detailFragment)
         }
+
+
     }
 
     override fun onResume() {
@@ -41,4 +45,29 @@ class MainNoteFragment : Fragment() {
         noteAdapter.addNotes(notes)
     }
 
+    private fun onClick(note: NoteModel) {
+        val bundle = Bundle().apply {
+            putSerializable("note", note)
+        }
+        findNavController().navigate(R.id.detailFragment, bundle)
+    }
+
+
+    private fun onLongClick(note: NoteModel){
+        val builder: AlertDialog.Builder? = context?.let { AlertDialog.Builder(it) }
+        builder?.setTitle("Удалить ?")
+        builder?.setPositiveButton("Да") { dialog, id ->
+            App.appDatabase.noteDao().deleteNote(note)
+            onResume()
+
+        }
+        builder?.setNegativeButton("Нет") { dialog, id ->
+
+        }
+
+        builder?.show()
+
+
+        App.appDatabase.noteDao().deleteNote(note)
+    }
 }

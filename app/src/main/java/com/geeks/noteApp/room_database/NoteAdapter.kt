@@ -1,12 +1,11 @@
-package com.geeks.noteapp.room_database
+package com.geeks.noteApp.room_database
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.geeks.noteapp.databinding.ItemListNoteBinding
+import com.geeks.noteApp.databinding.ItemListNoteBinding
 
-class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(private val onLongClick: (note: NoteModel) -> Unit, private val onClick: (note: NoteModel) -> Unit) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     private val notes = mutableListOf<NoteModel>()
 
@@ -23,17 +22,32 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.bind(notes[position])
+        
     }
 
     override fun getItemCount(): Int = notes.size
 
-    class NoteViewHolder(private val binding: ItemListNoteBinding) :
+    inner class NoteViewHolder(private val binding: ItemListNoteBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(note: NoteModel) {
             binding.textTitle.text = note.title
             binding.textDesc.text = note.desc
+
+            binding.cardView.setCardBackgroundColor(note.color)
+
+            itemView.setOnLongClickListener{
+                onLongClick(note)
+                true
+
+            }
+
+            itemView.setOnClickListener{
+                onClick(note)
+
+            }
         }
+
     }
 }
 

@@ -1,13 +1,13 @@
-package com.geeks.noteapp.on_board
+package com.geeks.noteApp.on_board
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.geeks.noteapp.databinding.FragmentPageBinding
+import com.geeks.noteApp.databinding.FragmentPageBinding
 import androidx.navigation.fragment.findNavController
-import com.geeks.noteapp.R
+import com.geeks.noteApp.R
 
 
 class PageFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.geeks.noteapp.room_database
+package com.geeks.noteApp.room_database
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE

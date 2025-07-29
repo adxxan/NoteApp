@@ -1,4 +1,4 @@
-package com.geeks.noteapp.room_database
+package com.geeks.noteApp.room_database
 
 import android.app.Application
 import androidx.room.Room
